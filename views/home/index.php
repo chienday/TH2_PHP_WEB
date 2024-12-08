@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chủ</title>
+    <title>TLU News</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -28,6 +28,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=admin&action=login">Đăng nhập</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?controller=admin&action=register">Đăng kí</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -37,6 +40,7 @@
 
     <!-- Main Content -->
     <main class="container mt-5">
+        <!-- Giới thiệu -->
         <section class="mb-4">
             <div class="text-center">
                 <h2>Giới thiệu</h2>
@@ -44,6 +48,17 @@
             </div>
         </section>
 
+        <!-- Form tìm kiếm -->
+        <section class="search-form mb-4">
+            <form action="index.php" method="GET" class="d-flex justify-content-center">
+                <input type="hidden" name="controller" value="news">
+                <input type="hidden" name="action" value="search">
+                <input class="form-control me-2" type="text" name="keyword" placeholder="Tìm kiếm tin tức..." required>
+                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+            </form>
+        </section>
+
+        <!-- Tin tức nổi bật -->
         <section class="featured-news">
             <h2 class="text-center mb-4">Tin tức nổi bật</h2>
             <div class="row">
