@@ -18,16 +18,18 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav mx-auto">
+                        <ul class="navbar-nav me-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=home&action=index">Trang chủ</a>
                             </li>
+                        </ul>
+                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=admin&action=login">Đăng nhập</a>
                             </li>
-                            <li class="nav-item">
+                           <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=admin&action=register">Đăng kí</a>
-                            </li>
+                           </li>
                         </ul>
                     </div>
                 </div>
