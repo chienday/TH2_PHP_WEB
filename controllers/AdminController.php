@@ -98,7 +98,7 @@ class AdminController {
     public function manageCategories() {
         $newsModel = new Category();
         $newsList= $newsModel->getAllNews();
-        include "views/admin/news/danhmuc.php";
+        include "views/admin/news/category.php";
     }
     // Hàm xử lý đăng xuất
     public function logout() {
