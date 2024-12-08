@@ -73,6 +73,12 @@ class AdminController {
         // Nếu là GET request, hiển thị form đăng ký
         require "views/admin/register.php";
     }
+     // Hàm quản lý tin tức
+    public function manageNews() {
+        $newsModel = new News();
+        $newsList= $newsModel->getAllNews();
+        include "views/admin/news/index.php";
+    }
 
     // Hàm xử lý đăng xuất
     public function logout() {
