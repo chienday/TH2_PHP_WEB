@@ -1,6 +1,10 @@
 <?php
 
 require_once 'models/User.php'; 
+require_once "models/News.php";
+require_once "models/Category.php";
+
+
 
 class AdminController {
 
@@ -79,7 +83,23 @@ class AdminController {
         $newsList= $newsModel->getAllNews();
         include "views/admin/news/index.php";
     }
+     // Quay lại trang dasboard
+    public function dashboard() {
+     
+        if (!isset($_SESSION['user'])) {
+            header("Location: index.php?controller=admin&action=login");
+            exit();
+        }
 
+      
+        include "views/admin/dasboard.php";
+    }
+    // Quản lí danh mục
+    public function manageCategories() {
+        $newsModel = new Category();
+        $newsList= $newsModel->getAllNews();
+        include "views/admin/news/danhmuc.php";
+    }
     // Hàm xử lý đăng xuất
     public function logout() {
         session_unset(); // Xóa toàn bộ dữ liệu trong session
