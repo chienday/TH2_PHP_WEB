@@ -25,3 +25,4 @@ CREATE TABLE news (
 ); 
 
 insert into users (id, username, password, role) values (1, 'chiendaynha123', 'chienday22', '1');
+insert into users (id, username, password, role) values (2, 'chienuser', 'chien11', '0');
