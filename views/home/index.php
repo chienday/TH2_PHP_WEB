@@ -23,9 +23,6 @@
                                 <a class="nav-link" href="index.php?controller=home&action=index">Trang chủ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php?controller=news&action=index">Tin tức</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=admin&action=login">Đăng nhập</a>
                             </li>
                             <li class="nav-item">
