@@ -1,25 +1,38 @@
 <?php
 session_start();
 
+// Lấy controller và action từ URL hoặc gán mặc định
 $controller = $_GET['controller'] ?? 'home';
 $action = $_GET['action'] ?? 'index';
 
+// Xử lý tên controller (chuyển thành dạng `HomeController`)
 $controllerName = ucfirst($controller) . "Controller";
 $controllerFile = "controllers/" . $controllerName . ".php";
 
+// Kiểm tra file controller có tồn tại không
 if (file_exists($controllerFile)) {
     require_once $controllerFile;
-    $controllerInstance = new $controllerName();
 
-    if (method_exists($controllerInstance, $action)) {
-        if (isset($_GET['id'])) {
-            $controllerInstance->$action($_GET['id']);
+    // Tạo instance của controller
+    if (class_exists($controllerName)) {
+        $controllerInstance = new $controllerName();
+
+        // Kiểm tra action có tồn tại trong controller hay không
+        if (method_exists($controllerInstance, $action)) {
+            // Gọi action với tham số id (nếu có)
+            $id = $_GET['id'] ?? null;
+            if ($id !== null) {
+                $controllerInstance->$action($id);
+            } else {
+                $controllerInstance->$action();
+            }
         } else {
-            $controllerInstance->$action();
+            echo "Action <b>$action</b> không tồn tại trong controller <b>$controller</b>!";
         }
     } else {
-        echo "Action $action không tồn tại!";
+        echo "Controller class <b>$controllerName</b> không tồn tại!";
     }
 } else {
-    echo "Controller $controller không tồn tại!";
+    echo "File controller <b>$controllerFile</b> không tồn tại!";
 }
+
