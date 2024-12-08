@@ -40,18 +40,10 @@ class User {
         return $db->lastInsertId();
     }
 
-    // Lấy thông tin người dùng theo ID
-    public static function getById($id) {
-        // Kết nối cơ sở dữ liệu
-        $db = Database::getConnection();
-        
-        // Truy vấn lấy thông tin người dùng theo ID
-        $stmt = $db->prepare("SELECT * FROM users WHERE id = :id");
-        $stmt->execute(['igetConnection();
-        
-        // Truy vấn xóa người dùng theo ID
-        $stmt = $db->prepare("DELETE FROM users WHERE id = :id");
-        $stmt->execute(['id' => $id]);
+    // Kiểm tra quyền của người dùng (nếu là quản trị viên)
+    public static function isAdmin($user) {
+        return $user['role'] == 1; // Nếu role = 1 là quản trị viên
     }
+
 }
 ?>
