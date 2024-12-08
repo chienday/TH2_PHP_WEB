@@ -10,7 +10,7 @@ $noidung = [
         'description'=>'HLV Barca Hansi Flick cho rằng khác biệt với văn hóa Tây Ban Nha khiến ông phải nhận thẻ đỏ vì phản ứng trong trận hòa Real Betis 2-2 ở La Liga ngày 7/12.',
         'url'=>'https://vnexpress.net/flick-phan-bua-sau-khi-bi-truat-quyen-chi-dao-4825348.html',
     ]
-]
+    ];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,13 +32,13 @@ $noidung = [
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav mx-auto">
+                        <ul class="navbar-nav me-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=home&action=index">Trang chủ</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.php?controller=news&action=index">Tin tức</a>
-                            </li>
+                        </ul>
+                           
+                        <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=admin&action=login">Đăng nhập</a>
                             </li>
@@ -76,20 +76,18 @@ $noidung = [
         <section class="featured-news">
             <h2 class="text-center mb-4">Tin tức nổi bật</h2>
             <div class="row">
-                <?php if (!empty($featuredNews)): ?>
-                    <?php
-            foreach ($noidung as $data){
-                ?>
-                <div class="">
-                    <h2><?php echo ($i.'.'.$data['title']); ?></h2>
-                    <div class="conten"> 
-                        <p><?php echo ($data['description']); ?></p>
-                    </div>
-                    <img src="<?php echo ($data['url']); ?>" alt="" class="flower-image" ><br><br>
-                </div>
-           <?php   
-    }
-       ?>
+                <?php if (!empty($noidung)): ?>
+                    <?php foreach ($noidung as $index => $data): ?>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo ($index + 1) . '. ' . htmlspecialchars($data['title']); ?></h5>
+                                    <p class="card-text"><?php echo htmlspecialchars($data['description']); ?></p>
+                                    <a href="<?php echo htmlspecialchars($data['url']); ?>" class="btn btn-primary" target="_blank">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 <?php else: ?>
                     <p class="text-center">Không có tin tức nổi bật để hiển thị.</p>
                 <?php endif; ?>
