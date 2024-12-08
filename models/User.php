@@ -23,7 +23,7 @@ class User {
     // Đăng ký người dùng mới
     public static function register($username, $password, $role = 0) {
         // Kết nối cơ sở dữ liệu
-        $db = Database::connect();
+        $db = Database::getConnection();
         
         // Mã hóa mật khẩu trước khi lưu
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -43,42 +43,11 @@ class User {
     // Lấy thông tin người dùng theo ID
     public static function getById($id) {
         // Kết nối cơ sở dữ liệu
-        $db = Database::connect();
+        $db = Database::getConnection();
         
         // Truy vấn lấy thông tin người dùng theo ID
         $stmt = $db->prepare("SELECT * FROM users WHERE id = :id");
-        $stmt->execute(['id' => $id]);
-        return $stmt->fetch();
-    }
-
-    // Kiểm tra quyền của người dùng (nếu là quản trị viên)
-    public static function isAdmin($user) {
-        return $user['role'] == 1; // Nếu role = 1 là quản trị viên
-    }
-
-    // Cập nhật thông tin người dùng
-    public static function update($id, $username, $password = null) {
-        // Kết nối cơ sở dữ liệu
-        $db = Database::connect();
-        
-        if ($password) {
-            // Mã hóa mật khẩu mới nếu có
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            
-            // Truy vấn cập nhật thông tin người dùng (bao gồm mật khẩu)
-            $stmt = $db->prepare("UPDATE users SET username = :username, password = :password WHERE id = :id");
-            $stmt->execute(['username' => $username, 'password' => $hashedPassword, 'id' => $id]);
-        } else {
-            // Truy vấn cập nhật chỉ tên đăng nhập nếu không có thay đổi mật khẩu
-            $stmt = $db->prepare("UPDATE users SET username = :username WHERE id = :id");
-            $stmt->execute(['username' => $username, 'id' => $id]);
-        }
-    }
-
-    // Xóa người dùng
-    public static function delete($id) {
-        // Kết nối cơ sở dữ liệu
-        $db = Database::connect();
+        $stmt->execute(['igetConnection();
         
         // Truy vấn xóa người dùng theo ID
         $stmt = $db->prepare("DELETE FROM users WHERE id = :id");
