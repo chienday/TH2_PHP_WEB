@@ -1,9 +1,10 @@
 <?php
 
-require_once 'models/User.php'; // Bao gồm file User.php
+require_once 'models/User.php'; 
 
 class AdminController {
 
+    
     // Hàm xử lý đăng nhập
     public function login() {
         // Nếu là yêu cầu POST từ form đăng nhập
@@ -40,13 +41,47 @@ class AdminController {
         include "views/admin/login.php";
     }
 
+    // Hàm xử lý đăng ký
+    public function register() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $confirm_password = $_POST['confirm_password'];
+
+            // Kiểm tra mật khẩu khớp
+            if ($password !== $confirm_password) {
+                $_SESSION['register_error'] = 'Mật khẩu không khớp!';
+                header('Location: index.php?controller=admin&action=register');
+                exit;
+            }
+
+            // Gọi model User để kiểm tra và lưu thông tin
+            $user = User::register($username, $password);
+
+            // Kiểm tra kết quả đăng ký
+            if ($user) {
+                $_SESSION['register_success'] = 'Đăng ký thành công! Hãy đăng nhập.';
+                header('Location: index.php?controller=admin&action=login');
+                exit;
+            } else {
+                $_SESSION['register_error'] = 'Tài khoản đã tồn tại!';
+                header('Location: index.php?controller=admin&action=register');
+                exit;
+            }
+        }
+        
+        // Nếu là GET request, hiển thị form đăng ký
+        require "views/admin/register.php";
+    }
+
     // Hàm xử lý đăng xuất
     public function logout() {
-        session_start(); // Khởi tạo session để sử dụng $_SESSION
         session_unset(); // Xóa toàn bộ dữ liệu trong session
         session_destroy(); // Hủy session
-        header("Location: login.php"); // Chuyển hướng về trang login
+        header("Location: index.php?controller=admin&action=login"); // Chuyển hướng về trang login
         exit;
     }
+
+    
 }
 ?>
