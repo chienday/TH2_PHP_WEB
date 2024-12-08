@@ -1,3 +1,13 @@
+<?php
+
+if (!isset($_SESSION['user'])) {
+    header("Location: index.php?controller=admin&action=login");
+    exit();
+}
+
+$user = $_SESSION['user'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +19,8 @@
 <body>
     <div class="container mt-5">
         <h2 class="text-center mb-4">Danh sách Tin tức</h2>
+        <a href="index.php?controller=admin&action=dashboard" class="btn btn-primary mb-3">Quay lại</a>
+
         <a href="index.php?controller=admin&action=addNews" class="btn btn-success mb-3">Thêm tin tức</a>
         <table class="table table-bordered">
             <thead>
