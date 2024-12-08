@@ -1,3 +1,17 @@
+<?php
+$noidung = [
+    [
+        'title' => 'Khởi công khối phòng học điểm trường ở Hà Tĩnh',
+        'description' =>'Công trình khối phòng học chức năng sẽ là nơi dạy và học của thầy trò Trường tiểu học Quang Vĩnh, đồng thời cũng là điểm tránh trú an toàn khi mưa lũ về.',
+        'url'=>'https://tuoitre.vn/khoi-cong-khoi-phong-hoc-diem-truong-vuot-lu-o-ha-tinh-20231206083052028.htm',
+    ],
+    [
+        'title' =>'Flick phân bua sau khi bị truất quyền chỉ đạo',
+        'description'=>'HLV Barca Hansi Flick cho rằng khác biệt với văn hóa Tây Ban Nha khiến ông phải nhận thẻ đỏ vì phản ứng trong trận hòa Real Betis 2-2 ở La Liga ngày 7/12.',
+        'url'=>'https://vnexpress.net/flick-phan-bua-sau-khi-bi-truat-quyen-chi-dao-4825348.html',
+    ]
+]
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,18 +32,19 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav me-auto">
+                        <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=home&action=index">Trang chủ</a>
                             </li>
-                        </ul>
-                         <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?controller=news&action=index">Tin tức</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=admin&action=login">Đăng nhập</a>
                             </li>
-                           <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=admin&action=register">Đăng kí</a>
-                           </li>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -62,23 +77,19 @@
             <h2 class="text-center mb-4">Tin tức nổi bật</h2>
             <div class="row">
                 <?php if (!empty($featuredNews)): ?>
-                    <?php foreach ($featuredNews as $news): ?>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <img src="<?php echo htmlspecialchars($news['image']); ?>" class="card-img-top" alt="Image">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <a href="index.php?controller=news&action=detail&id=<?php echo $news['id']; ?>">
-                                            <?php echo htmlspecialchars($news['title']); ?>
-                                        </a>
-                                    </h5>
-                                    <p class="card-text">
-                                        <?php echo htmlspecialchars(mb_strimwidth($news['content'], 0, 100, "...")); ?>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                    <?php
+            foreach ($noidung as $data){
+                ?>
+                <div class="">
+                    <h2><?php echo ($i.'.'.$data['title']); ?></h2>
+                    <div class="conten"> 
+                        <p><?php echo ($data['description']); ?></p>
+                    </div>
+                    <img src="<?php echo ($data['url']); ?>" alt="" class="flower-image" ><br><br>
+                </div>
+           <?php   
+    }
+       ?>
                 <?php else: ?>
                     <p class="text-center">Không có tin tức nổi bật để hiển thị.</p>
                 <?php endif; ?>
