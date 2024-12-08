@@ -60,4 +60,14 @@ class NewsController {
             echo "Xóa tin tức thất bại.";
         }
     }
+     public function search() {
+        if (isset($_GET['keyword'])) {
+            $keyword = $_GET['keyword'];
+            $newsList = News::search($keyword);  
+        } else {
+            $newsList = [];
+        }
+    
+        include "views/home/searchResults.php";  
+    }
 }
