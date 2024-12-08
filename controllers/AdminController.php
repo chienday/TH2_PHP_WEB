@@ -104,7 +104,7 @@ class AdminController {
     public function logout() {
         session_unset(); // Xóa toàn bộ dữ liệu trong session
         session_destroy(); // Hủy session
-        header("Location: index.php?controller=admin&action=login"); // Chuyển hướng về trang login
+        header("Location: index.php"); // Chuyển hướng về trang login
         exit;
     }
 
