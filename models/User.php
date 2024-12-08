@@ -5,7 +5,7 @@ class User {
     // Đăng nhập người dùng
     public static function login($username, $password) {
         // Kết nối cơ sở dữ liệu
-        $db = Database::connect();
+        $db = Database::getConnection();
         
         // Truy vấn tìm người dùng theo tên đăng nhập
         $stmt = $db->prepare("SELECT * FROM users WHERE username = :username");

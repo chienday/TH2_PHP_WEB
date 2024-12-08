@@ -3,7 +3,7 @@ require_once "config/Database.php";
 
 class Category {
     public static function getAll() {
-        $db = Database::connect();
+        $db = Database::getConnection();
         $stmt = $db->query("SELECT * FROM categories");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

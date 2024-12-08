@@ -26,7 +26,7 @@
                                 <a class="nav-link" href="index.php?controller=news&action=index">Tin tức</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php?controller=admin&action=login">Quản trị</a>
+                                <a class="nav-link" href="index.php?controller=admin&action=login">Đăng nhập</a>
                             </li>
                         </ul>
                     </div>
