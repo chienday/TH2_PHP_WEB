@@ -18,16 +18,15 @@ $user = $_SESSION['user'];
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Danh sách Tin tức</h2>
+        <h2 class="text-center mb-4">Danh sách mục </h2>
         <a href="index.php?controller=admin&action=dashboard" class="btn btn-primary mb-3">Quay lại</a>
 
-        <a href="index.php?controller=admin&action=addNews" class="btn btn-success mb-3">Thêm tin tức</a>
+        <a href="index.php?controller=admin&action=add" class="btn btn-success mb-3">Thêm danh mục</a>
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tiêu đề</th>
-                    <th>Ngày tạo</th>
+                    <th>Tên</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -35,8 +34,8 @@ $user = $_SESSION['user'];
                 <?php foreach ($newsList as $news): ?>
                     <tr>
                         <td><?php echo $news['id']; ?></td>
-                        <td><?php echo htmlspecialchars($news['title']); ?></td>
-                        <td><?php echo $news['created_at']; ?></td>
+                        <td><?php echo htmlspecialchars($news['name']); ?></td>
+                        
                         <td>
                             <a href="index.php?controller=admin&action=editNews&id=<?php echo $news['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
                             <a href="index.php?controller=admin&action=deleteNews&id=<?php echo $news['id']; ?>" class="btn btn-danger btn-sm">Xóa</a>
